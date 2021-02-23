@@ -28,17 +28,11 @@ jobs:
       - name: Mirroring Repository
       # You may pin to the exact commit or the version.
       # uses: pixta-dev/repository-mirroring-action@02f1627ade9e6b3b69e6a6d4fe8bc997474f48d1
-      uses: pixta-dev/repository-mirroring-action@v1
-      with:
-        # SSH private key for ssh connection to the target repository
-        ssh_private_key: $SSH_KEY
-        # Target url
-        target_repo_url: https://git.co.davivienda.com/qr-tricolor/pruebamirror
-        # Username for ssh connection
-        ssh_username: nicolas.pulido # optional, default is git
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+        uses: pixta-dev/repository-mirroring-action@v1
+        with:
+          # SSH private key for ssh connection to the target repository
+          ssh_private_key: $SSH_KEY
+          # Target url
+          target_repo_url: https://git.co.davivienda.com/qr-tricolor/pruebamirror
+          # Username for ssh connection
+          ssh_username: nicolas.pulido # optional, default is git
