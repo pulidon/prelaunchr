@@ -1,0 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: Mirroring Repository
+      # You may pin to the exact commit or the version.
+      # uses: pixta-dev/repository-mirroring-action@02f1627ade9e6b3b69e6a6d4fe8bc997474f48d1
+      uses: pixta-dev/repository-mirroring-action@v1
+      with:
+        # SSH private key for ssh connection to the target repository
+        ssh_private_key: $SSH_KEY
+        # Target url
+        target_repo_url: https://git.co.davivienda.com/qr-tricolor/pruebamirror
+        # Username for ssh connection
+        ssh_username: nicolas.pulido # optional, default is git
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
